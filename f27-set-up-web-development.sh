@@ -96,3 +96,5 @@ done
 
 sudo systemctl start mariadb.service # start the MYSQL database
 sudo mysql_secure_installation       # finish installation of MYSQL to make it secure
+
+sudo setsebool -P httpd_execmem 1 # stop SELinux is preventing php-fpm from using the execmem access on a process
