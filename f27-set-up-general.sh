@@ -78,10 +78,10 @@ sudo sed -i "s/; default-sample-format = s16le/default-sample-format = s32le/g" 
 sudo sed -i "s/; resample-method = speex-float-1/resample-method = speex-float-10/g" /etc/pulse/daemon.conf
 sudo sed -i "s/; avoid-resampling = false/avoid-resampling = true/g" /etc/pulse/daemon.conf # for pulse 11 only
 
-# Config Jack assuming jack has created the 95-jack.conf file we are going to overwrite
+# Add our current user to the jackuser group
 sudo usermod -a -G jackuser "$USERNAME"
 
-# add our current user to the jackuser group
+# Config Jack assuming jack has created the 95-jack.conf file we are going to overwrite
 printf "# Default limits for users of jack-audio-connection-kit\n\n@jackuser - rtprio 98\n@jackuser - memlock unlimited\n\n@pulse-rt - rtprio 20\n@pulse-rt - nice -20" | sudo tee /etc/security/limits.d/95-jack.conf # rewrite the config file
 
 # Create symbolic links for external hard drive folders
