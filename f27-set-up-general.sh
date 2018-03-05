@@ -2,14 +2,12 @@
 
 #=======================================================================================
 #
-#         FILE: XXXXX.sh
-#
-#        USAGE: XXXXX.sh
+#         FILE: f27-set-up-general.sh
+#        USAGE: f27-set-up-general.sh
 #
 #  DESCRIPTION: Post-installation Bash script for Fedora 27 Workstation General
-#      WEBSITE:
+#      WEBSITE: https://www.elsewebdevelopment.com/
 #
-#      OPTIONS: see function ’usage’ below
 # REQUIREMENTS: Fedora installed on your computer
 #         BUGS: ---
 #        NOTES: After installation you may perform these additional tasks:
@@ -24,9 +22,7 @@
 #             - UMS > un-tick general config > enable external network + check force network on interface is correct network (wlp2s0)
 #       AUTHOR: David Else
 #      COMPANY: Else Web Development
-#      VERSION: 1.0
-#      CREATED: 11-7-17
-#     REVISION: 28-12-17
+#      VERSION: 1.01
 #=======================================================================================
 
 read -rp "What would you like this computer to be called (hostname)? " hostname
@@ -46,7 +42,7 @@ sudo dnf -y install libva-intel-driver gstreamer1-vaapi gstreamer1-libav ffmpeg 
 	java-1.8.0-openjdk keepassx transmission-gtk mkvtoolnix-gui borgbackup \
 	freetype-freeworld lshw mediainfo dolphin-emu mame virt-manager klavaro jack-audio-connection-kit
 
-# Add some alias
+# Add some aliases
 cat >>"$HOME/.bashrc" <<EOL
 alias ls="ls -ltha --color --group-directories-first" # l=long listing format, t=sort by modification time (newest first), h=human readable sizes, a=print hidden files
 alias tree="tree -Catr --noreport --dirsfirst --filelimit 100" # -C=colorization on, a=print hidden files, t=sort by modification time, r=reversed sort by time (newest first)
@@ -73,10 +69,9 @@ echo "Xft.lcdfilter: lcddefault" | sudo tee ~/.Xresources
 
 # pacmd list-sinks | grep sample and see bitdepth available
 # pulseaudio --dump-resample-methods and see resampling available
-# Increase quality of Pulse audio sound MAKE SURE your interface can handle s32le 32bit rather than the default 16bit
-sudo sed -i "s/; default-sample-format = s16le/default-sample-format = s32le/g" /etc/pulse/daemon.conf
+sudo sed -i "s/; default-sample-format = s16le/default-sample-format = s32le/g" /etc/pulse/daemon.conf # MAKE SURE your interface can handle s32le 32bit rather than the default 16bit
 sudo sed -i "s/; resample-method = speex-float-1/resample-method = speex-float-10/g" /etc/pulse/daemon.conf
-sudo sed -i "s/; avoid-resampling = false/avoid-resampling = true/g" /etc/pulse/daemon.conf # for pulse 11 only
+sudo sed -i "s/; avoid-resampling = false/avoid-resampling = true/g" /etc/pulse/daemon.conf # for pulse >=11 only
 
 # Add our current user to the jackuser group
 sudo usermod -a -G jackuser "$USERNAME"
@@ -85,9 +80,9 @@ sudo usermod -a -G jackuser "$USERNAME"
 printf "# Default limits for users of jack-audio-connection-kit\n\n@jackuser - rtprio 98\n@jackuser - memlock unlimited\n\n@pulse-rt - rtprio 20\n@pulse-rt - nice -20" | sudo tee /etc/security/limits.d/95-jack.conf # rewrite the config file
 
 # Create symbolic links for external hard drive folders
-ln -s /run/media/david/WD-Red-2TB/Media/Audio ~/Music
-ln -s /run/media/david/WD-Red-2TB/Media/Video ~/Videos
-ln -s /run/media/david/WD-Red-2TB/Media/Photos ~/Pictures
+# ln -s /run/media/david/WD-Red-2TB/Media/Audio ~/Music
+# ln -s /run/media/david/WD-Red-2TB/Media/Video ~/Videos
+# ln -s /run/media/david/WD-Red-2TB/Media/Photos ~/Pictures
 
 echo
 echo "========================"
