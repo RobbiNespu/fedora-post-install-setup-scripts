@@ -5,10 +5,10 @@
 #         FILE: f27-set-up-general.sh
 #        USAGE: f27-set-up-general.sh
 #
-#  DESCRIPTION: Post-installation Bash script for Fedora 27 Workstation General
+#  DESCRIPTION: Post-installation Bash script for Fedora 27 Workstation general use
 #      WEBSITE: https://www.elsewebdevelopment.com/
 #
-# REQUIREMENTS: Fedora installed on your computer
+# REQUIREMENTS: Fedora 27 installed on your computer
 #         BUGS: ---
 #        NOTES: After installation you may perform these additional tasks:
 #             - Firefox "about:support" what is compositor? If 'basic' open "about:config"

@@ -2,15 +2,13 @@
 
 #=======================================================================================
 #
-#         FILE: XXXXX.sh
+#         FILE: f27-set-up-web-development.sh
+#        USAGE: f27-set-up-web-development.sh
 #
-#        USAGE: XXXXX.sh
+#  DESCRIPTION: Post-installation Bash script for Fedora 27 Workstation for web development
+#      WEBSITE: https://www.elsewebdevelopment.com/
 #
-#  DESCRIPTION: Post-installation Bash script for Fedora Workstation for web development
-#      WEBSITE:
-#
-#      OPTIONS: see function ’usage’ below
-# REQUIREMENTS: Fedora installed on your computer
+# REQUIREMENTS: Fedora 27 installed on your computer
 #         BUGS: ---
 #        NOTES: After installation you may perform these additional tasks:
 #             - Disable drag & drop in Filezilla, run Filezilla once to create the config
@@ -37,9 +35,7 @@
 #               ---------------
 #       AUTHOR: David Else
 #      COMPANY: Else Web Development
-#      VERSION: 1.0
-#      CREATED: 11-7-17
-#     REVISION: 29-11-17
+#      VERSION: 1.01
 #=======================================================================================
 
 # Enable Microsoft repository for VS Code
@@ -64,14 +60,15 @@ code --install-extension ritwickdey.LiveServer
 code --install-extension shinnn.stylelint
 code --install-extension timonwong.shellcheck
 
-# Install Node packages
+# Install global Node packages
 sudo npm install -g npm-check eslint
 
-# install shfmt shell parser onto the system for vs code plugin shell-format
-chmod +x shfmt_v2.1.0_linux_amd64
-sudo mv shfmt_v2.1.0_linux_amd64 /usr/local/bin/shfmt
+# Install shfmt 2.2.1 shell parser from current directory onto the system for VS Code plugin shell-format
+# Binary available from https://github.com/mvdan/sh/releases
+chmod +x shfmt_v2.2.1_linux_amd64
+sudo mv shfmt_v2.2.1_linux_amd64 /usr/local/bin/shfmt
 
-# install wordpress cli
+# Install Wordpress CLI
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
@@ -94,7 +91,7 @@ for key in upload_max_filesize post_max_size max_execution_time; do
     sudo sed -i "s/^\($key\).*/\1 = $(eval echo \${$key})/" /etc/php.ini
 done
 
+sudo setsebool -P httpd_execmem 1    # stop SELinux is preventing php-fpm from using the execmem access on a process
+
 sudo systemctl start mariadb.service # start the MYSQL database
 sudo mysql_secure_installation       # finish installation of MYSQL to make it secure
-
-sudo setsebool -P httpd_execmem 1 # stop SELinux is preventing php-fpm from using the execmem access on a process
