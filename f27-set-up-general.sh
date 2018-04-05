@@ -40,7 +40,9 @@ echo "Installing packages..."
 sudo dnf -y install libva-intel-driver gstreamer1-vaapi gstreamer1-libav ffmpeg mpv \
 	fuse-exfat gnome-tweak-tool gnome-shell-extension-auto-move-windows.noarch gnome-shell-extension-pomodoro \
 	java-1.8.0-openjdk keepassx transmission-gtk mkvtoolnix-gui borgbackup \
-	freetype-freeworld lshw mediainfo dolphin-emu mame virt-manager klavaro jack-audio-connection-kit
+	freetype-freeworld lshw mediainfo dolphin-emu mame virt-manager klavaro jack-audio-connection-kit youtube-dl
+
+pip3 install --user mps-youtube
 
 # Add some aliases
 cat >>"$HOME/.bashrc" <<EOL

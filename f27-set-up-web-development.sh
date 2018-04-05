@@ -44,20 +44,22 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 
 echo "Installing packages..."
 
-# ffmpeg-libs is needed for h264 video in firefox, see general install script
+# ffmpeg-libs is needed for h264 video in firefox, see general install script, maybe add python3-tkinter for GUI in Python
 sudo dnf -y install php phpmyadmin php-mysqlnd php-opcache mariadb-server sendmail \
     code chromium filezilla nodejs zeal ShellCheck
 
 # Install VS Code extensions
-code --install-extension HookyQR.beautify
+code --install-extension WallabyJs.quokka-vscode
 code --install-extension ban.spellright
-code --install-extension christian-kohler.path-intellisense
 code --install-extension dbaeumer.vscode-eslint
 code --install-extension deerawan.vscode-dash
+code --install-extension esbenp.prettier-vscode
 code --install-extension foxundermoon.shell-format
+code --install-extension mkaufman.HTMLHint
 code --install-extension msjsdiag.debugger-for-chrome
 code --install-extension ritwickdey.LiveServer
 code --install-extension shinnn.stylelint
+code --install-extension spoonscen.es6-mocha-snippets
 code --install-extension timonwong.shellcheck
 
 # Install global Node packages
