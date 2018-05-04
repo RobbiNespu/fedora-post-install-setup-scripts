@@ -5,7 +5,7 @@
 #         FILE: f27-28-set-up-general.sh
 #        USAGE: f27-28-set-up-general.sh
 #
-#  DESCRIPTION: Post-installation Bash script for Fedora 27 Workstation general use
+#  DESCRIPTION: Post-installation Bash script for Fedora 27/28 Workstation general use
 #      WEBSITE: https://www.elsewebdevelopment.com/
 #
 # REQUIREMENTS: Fedora 27/28 installed on your computer
@@ -25,6 +25,7 @@
 #      VERSION: 1.02
 #=======================================================================================
 
+# Not needed on F28 as user prompted for name during setup
 read -rp "What would you like this computer to be called (hostname)? " hostname
 hostnamectl set-hostname "$hostname"
 
@@ -69,8 +70,8 @@ gsettings set org.gnome.settings-daemon.plugins.xsettings hinting slight
 gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing rgba
 echo "Xft.lcdfilter: lcddefault" | sudo tee ~/.Xresources
 
-# pacmd list-sinks | grep sample and see bitdepth available
-# pulseaudio --dump-resample-methods and see resampling available
+# pacmd list-sinks | grep sample and see bit-depth available
+# pulseaudio --dump-re-sample-methods and see re-sampling available
 sudo sed -i "s/; default-sample-format = s16le/default-sample-format = s32le/g" /etc/pulse/daemon.conf # MAKE SURE your interface can handle s32le 32bit rather than the default 16bit
 sudo sed -i "s/; resample-method = speex-float-1/resample-method = speex-float-10/g" /etc/pulse/daemon.conf
 sudo sed -i "s/; avoid-resampling = false/avoid-resampling = true/g" /etc/pulse/daemon.conf # for pulse >=11 only

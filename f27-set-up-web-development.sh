@@ -44,7 +44,7 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 
 echo "Installing packages..."
 
-# ffmpeg-libs is needed for h264 video in firefox, see general install script, maybe add python3-tkinter for GUI in Python
+# ffmpeg-libs is needed for h264 video in Firefox, see general install script, maybe add python3-tkinter for GUI in Python
 sudo dnf -y install php phpmyadmin php-mysqlnd php-opcache mariadb-server sendmail \
     code chromium filezilla nodejs zeal ShellCheck
 
@@ -76,7 +76,7 @@ sudo mv wp-cli.phar /usr/local/bin/wp
 
 # Make a directory for websites/apps and add the permissions
 mkdir ~/sites
-sudo ln -s ~/sites /var/www/html                                 # make symbolic link from the apache web directory to your sites folder
+sudo ln -s ~/sites /var/www/html                                 # make symbolic link from the Apache web directory to your sites folder
 chcon -R unconfined_u:object_r:httpd_sys_rw_content_t:s0 ~/sites # tell SELinux that these files/directories are allowed to be modified by Apache
 sudo setsebool -P httpd_can_network_connect 1                    # !! maybe not needed since Fedora 27 updates? !! tell SELinux Apache can connect to the outside network
 
