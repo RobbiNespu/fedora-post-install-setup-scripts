@@ -2,13 +2,13 @@
 
 #=======================================================================================
 #
-#         FILE: f27-set-up-web-development.sh
-#        USAGE: f27-set-up-web-development.sh
+#         FILE: f27-28-set-up-web-development.sh
+#        USAGE: f27-28-set-up-web-development.sh
 #
 #  DESCRIPTION: Post-installation Bash script for Fedora 27 Workstation for web development
 #      WEBSITE: https://www.elsewebdevelopment.com/
 #
-# REQUIREMENTS: Fedora 27 installed on your computer
+# REQUIREMENTS: Fedora 27/28 installed on your computer
 #         BUGS: ---
 #        NOTES: After installation you may perform these additional tasks:
 #             - Disable drag & drop in Filezilla, run Filezilla once to create the config
@@ -27,7 +27,7 @@
 #               #
 #               AllowOverride All
 #               ---------------
-#             - For PHP and Fedora 27 these config file changes are vital!
+#             - For PHP and Fedora 27+ these config file changes are vital!
 #               sudo gedit /etc/php-fpm.d/www.conf
 #               ---------------
 #               user = $USERNAME (was apache)
@@ -35,7 +35,7 @@
 #               ---------------
 #       AUTHOR: David Else
 #      COMPANY: Else Web Development
-#      VERSION: 1.01
+#      VERSION: 1.02
 #=======================================================================================
 
 # Enable Microsoft repository for VS Code
@@ -59,7 +59,6 @@ code --install-extension mkaufman.HTMLHint
 code --install-extension msjsdiag.debugger-for-chrome
 code --install-extension ritwickdey.LiveServer
 code --install-extension shinnn.stylelint
-code --install-extension spoonscen.es6-mocha-snippets
 code --install-extension timonwong.shellcheck
 
 # Install global Node packages

@@ -2,13 +2,13 @@
 
 #=======================================================================================
 #
-#         FILE: f27-set-up-general.sh
-#        USAGE: f27-set-up-general.sh
+#         FILE: f27-28-set-up-general.sh
+#        USAGE: f27-28-set-up-general.sh
 #
 #  DESCRIPTION: Post-installation Bash script for Fedora 27 Workstation general use
 #      WEBSITE: https://www.elsewebdevelopment.com/
 #
-# REQUIREMENTS: Fedora 27 installed on your computer
+# REQUIREMENTS: Fedora 27/28 installed on your computer
 #         BUGS: ---
 #        NOTES: After installation you may perform these additional tasks:
 #             - Firefox "about:support" what is compositor? If 'basic' open "about:config"
@@ -22,7 +22,7 @@
 #             - UMS > un-tick general config > enable external network + check force network on interface is correct network (wlp2s0)
 #       AUTHOR: David Else
 #      COMPANY: Else Web Development
-#      VERSION: 1.01
+#      VERSION: 1.02
 #=======================================================================================
 
 read -rp "What would you like this computer to be called (hostname)? " hostname
@@ -38,9 +38,9 @@ sudo dnf -y --refresh upgrade
 
 echo "Installing packages..."
 sudo dnf -y install libva-intel-driver gstreamer1-vaapi gstreamer1-libav ffmpeg mpv \
-	fuse-exfat gnome-tweak-tool gnome-shell-extension-auto-move-windows.noarch gnome-shell-extension-pomodoro \
-	java-1.8.0-openjdk keepassx transmission-gtk mkvtoolnix-gui borgbackup \
-	freetype-freeworld lshw mediainfo dolphin-emu mame virt-manager klavaro jack-audio-connection-kit youtube-dl
+    fuse-exfat gnome-tweak-tool gnome-shell-extension-auto-move-windows.noarch gnome-shell-extension-pomodoro \
+    java-1.8.0-openjdk keepassx transmission-gtk mkvtoolnix-gui borgbackup \
+    freetype-freeworld lshw mediainfo dolphin-emu mame virt-manager klavaro jack-audio-connection-kit youtube-dl
 
 pip3 install --user mps-youtube
 
