@@ -5,7 +5,7 @@
 #         FILE: f27-28-set-up-web-development.sh
 #        USAGE: f27-28-set-up-web-development.sh
 #
-#  DESCRIPTION: Post-installation Bash script for Fedora 27 Workstation for web development
+#  DESCRIPTION: Post-installation Bash script for Fedora 27/28 Workstation for web development
 #      WEBSITE: https://www.elsewebdevelopment.com/
 #
 # REQUIREMENTS: Fedora 27/28 installed on your computer
