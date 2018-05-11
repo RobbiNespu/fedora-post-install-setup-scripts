@@ -85,9 +85,9 @@ printf "# Default limits for users of jack-audio-connection-kit\n\n@jackuser - r
 # ln -s /run/media/david/WD-Red-2TB/Media/Photos ~/Pictures
 
 echo
-echo "========================"
-echo " REBOOTING IN 1 MINUTE! "
-echo "========================"
+echo "========================="
+echo " REBOOTING IN 2 MINUTES! "
+echo "========================="
 echo
 
-shutdown -r
+shutdown -r +2
