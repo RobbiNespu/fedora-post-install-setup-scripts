@@ -2,19 +2,20 @@
 
 #=======================================================================================
 #
-#         FILE: f27-28-set-up-general.sh
-#        USAGE: f27-28-set-up-general.sh
+#         FILE: f28-set-up-general.sh
+#        USAGE: f28-set-up-general.sh
 #
-#  DESCRIPTION: Post-installation Bash script for Fedora 27/28 Workstation general use
+#  DESCRIPTION: Post-installation Bash script for Fedora 28 Workstation general use
 #      WEBSITE: https://www.elsewebdevelopment.com/
 #
-# REQUIREMENTS: Fedora 27/28 installed on your computer
+# REQUIREMENTS: Fedora 28 installed on your computer
 #         BUGS: ---
 #        NOTES: After installation you may perform these additional tasks:
+#             - Install 'Hide Top Bar' extension from Gnome software
 #             - Firefox "about:support" what is compositor? If 'basic' open "about:config"
 #               find "layers.acceleration.force-enabled" and switch to true, this will
 #               force OpenGL acceleration
-#             - Add scripts directory to path > add :$HOME/scripts to PATH in.bash_profile
+#             - Update .bash_profile with 'PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/Documents/scripts:$HOME/Documents/scripts/borg-backup'
 #             - Install HTTPS everywhere, privacy badger, ublock origin in Firefox/Chromium
 #             - Consider "sudo dnf install kernel-tools", "sudo cpupower frequency-set --governor performance"
 #             - Files > preferences > views > sort folders before files
@@ -22,16 +23,12 @@
 #             - UMS > un-tick general config > enable external network + check force network on interface is correct network (wlp2s0)
 #       AUTHOR: David Else
 #      COMPANY: Else Web Development
-#      VERSION: 1.02
+#      VERSION: 1.0
 #=======================================================================================
-
-# Not needed on F28 as user prompted for name during setup
-read -rp "What would you like this computer to be called (hostname)? " hostname
-hostnamectl set-hostname "$hostname"
 
 # Enable repositories
 sudo su -c 'dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'
-# sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/26/winehq.repo and install winehq-stable
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Update everything
 echo "Updating Fedora..."
@@ -41,7 +38,7 @@ echo "Installing packages..."
 sudo dnf -y install libva-intel-driver gstreamer1-vaapi gstreamer1-libav ffmpeg mpv \
     fuse-exfat gnome-tweak-tool gnome-shell-extension-auto-move-windows.noarch gnome-shell-extension-pomodoro \
     java-1.8.0-openjdk keepassx transmission-gtk mkvtoolnix-gui borgbackup syncthing \
-    freetype-freeworld lshw mediainfo dolphin-emu mame klavaro jack-audio-connection-kit youtube-dl
+    freetype-freeworld lshw mediainfo dolphin-emu mame klavaro jack-audio-connection-kit wine youtube-dl
 
 pip3 install --user mps-youtube
 
@@ -57,10 +54,10 @@ gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,m
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.session idle-delay 1200
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:backspace', 'terminate:ctrl_alt_bksp']"
-gsettings set org.gnome.shell.extensions.auto-move-windows application-list "['org.gnome.Nautilus.desktop:2', 'org.gnome.Terminal.desktop:3', 'code.desktop:1', 'firefox.desktop:1', 'wine.desktop:4']" # for the gnome-shell-extension-auto-move extension
+gsettings set org.gnome.shell.extensions.auto-move-windows application-list "['org.gnome.Nautilus.desktop:2', 'org.gnome.Terminal.desktop:3', 'code.desktop:1', 'firefox.desktop:1']" # for the gnome-shell-extension-auto-move extension
 
-# Allow virtual machines that use fusefs to intall properly with SELinux
-sudo setsebool -P virt_use_fusefs 1
+# Allow virtual machines that use fusefs to intall properly with SELinux (commented out, hope it now works without this hack)
+# sudo setsebool -P virt_use_fusefs 1
 
 # Increase the amount of inotify watchers for live-server and audio
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
