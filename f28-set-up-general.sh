@@ -55,6 +55,7 @@ gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.session idle-delay 1200
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:backspace', 'terminate:ctrl_alt_bksp']"
 gsettings set org.gnome.shell.extensions.auto-move-windows application-list "['org.gnome.Nautilus.desktop:2', 'org.gnome.Terminal.desktop:3', 'code.desktop:1', 'firefox.desktop:1']" # for the gnome-shell-extension-auto-move extension
+gsettings set org.gnome.shell enabled-extensions "['pomodoro@arun.codito.in', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com']"
 
 # Allow virtual machines that use fusefs to intall properly with SELinux (commented out, hope it now works without this hack)
 # sudo setsebool -P virt_use_fusefs 1
