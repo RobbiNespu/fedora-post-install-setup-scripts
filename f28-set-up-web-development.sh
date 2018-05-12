@@ -10,7 +10,7 @@
 #
 # REQUIREMENTS: Fedora 28 installed on your computer
 #         BUGS: ---
-#        NOTES:
+#        NOTES: for spellright to work copy Dictionaries to ~/.config/Code/Dictionaries
 #               ---------------
 #       AUTHOR: David Else
 #      COMPANY: Else Web Development
