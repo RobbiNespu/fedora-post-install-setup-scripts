@@ -19,6 +19,7 @@
 
 if [ ! -f ./shfmt_v2.3.0_linux_amd64 ]; then
     echo "shfmt_v2.3.0_linux_amd64 File not found!"
+    exit 1
 fi
 
 # Enable Microsoft repository for VS Code
