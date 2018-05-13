@@ -81,7 +81,7 @@ sudo usermod -a -G jackuser "$USERNAME"
 
 # create config for mpv
 # TEST printf "profile=gpu-hq\nfullscreen=yes\nvideo-sync=display-resample\ninterpolation=yes\ntscale=oversample\n" | tee $HOME/.config/mpv/mpv.conf
-printf "profile=gpu-hq\nfullscreen=yes\n" | tee $HOME/.config/mpv/mpv.conf
+printf "profile=gpu-hq\nfullscreen=yes\n" | tee "$HOME/.config/mpv/mpv.conf" || echo "Error creating mpv conf file!"
 
 # Config Jack assuming jack has created the 95-jack.conf file we are going to overwrite
 printf "# Default limits for users of jack-audio-connection-kit\n\n@jackuser - rtprio 98\n@jackuser - memlock unlimited\n\n@pulse-rt - rtprio 20\n@pulse-rt - nice -20" | sudo tee /etc/security/limits.d/95-jack.conf # rewrite the config file
