@@ -28,7 +28,7 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 echo "Installing packages..."
 
 # ffmpeg-libs is needed for h264 video in Firefox, see general install script, maybe add python3-tkinter for GUI in Python
-sudo dnf -y install docker docker-compose code chromium nodejs zeal ShellCheck
+sudo dnf -y install docker docker-compose code chromium chromium-libs-media-freeworld nodejs zeal ShellCheck
 
 # Install VS Code extensions
 code --install-extension WallabyJs.quokka-vscode
