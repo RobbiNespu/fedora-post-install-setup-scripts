@@ -11,6 +11,8 @@
 # REQUIREMENTS: Fedora 28 installed on your computer
 #         BUGS: ---
 #        NOTES: After installation you may perform these additional tasks:
+#             - Run mpv once then 'printf "profile=gpu-hq\nfullscreen=yes\n" | tee "$HOME/.config/mpv/mpv.conf"' or:
+#                                          profile=gpu-hq\nfullscreen=yes\nvideo-sync=display-resample\ninterpolation=yes\ntscale=oversample\n
 #             - Install 'Hide Top Bar' extension from Gnome software
 #             - Firefox "about:support" what is compositor? If 'basic' open "about:config"
 #               find "layers.acceleration.force-enabled" and switch to true, this will
@@ -78,10 +80,6 @@ sudo sed -i "s/; avoid-resampling = false/avoid-resampling = true/g" /etc/pulse/
 
 # Add our current user to the jackuser group
 sudo usermod -a -G jackuser "$USERNAME"
-
-# create config for mpv
-# TEST printf "profile=gpu-hq\nfullscreen=yes\nvideo-sync=display-resample\ninterpolation=yes\ntscale=oversample\n" | tee $HOME/.config/mpv/mpv.conf
-printf "profile=gpu-hq\nfullscreen=yes\n" | tee "$HOME/.config/mpv/mpv.conf" || echo "Error creating mpv conf file!"
 
 # Config Jack assuming jack has created the 95-jack.conf file we are going to overwrite
 printf "# Default limits for users of jack-audio-connection-kit\n\n@jackuser - rtprio 98\n@jackuser - memlock unlimited\n\n@pulse-rt - rtprio 20\n@pulse-rt - nice -20" | sudo tee /etc/security/limits.d/95-jack.conf # rewrite the config file
