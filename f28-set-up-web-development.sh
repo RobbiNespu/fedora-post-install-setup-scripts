@@ -11,6 +11,7 @@
 # REQUIREMENTS: Fedora 28 installed on your computer
 #         BUGS: ---
 #        NOTES: for spellright to work copy Dictionaries to ~/.config/Code/Dictionaries
+#               on new system you might need 'ssh-keyscan github.com >> ~/.ssh/known_hosts'
 #               ---------------
 #       AUTHOR: David Else
 #      COMPANY: Else Web Development
