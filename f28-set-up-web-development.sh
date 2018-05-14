@@ -14,7 +14,7 @@
 #               ---------------
 #       AUTHOR: David Else
 #      COMPANY: Else Web Development
-#      VERSION: 1.11 (move to Docker for dev environment)
+#      VERSION: 1.12 (move to Docker for dev environment)
 #=======================================================================================
 
 if [ ! -f ./shfmt_v2.3.0_linux_amd64 ]; then
