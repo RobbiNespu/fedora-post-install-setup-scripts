@@ -55,6 +55,10 @@ sudo mv shfmt_v2.3.0_linux_amd64 /usr/local/bin/shfmt
 # Make a directory for websites/apps
 mkdir ~/sites
 
+# Set git global values, you can still change them per project without the --global
+git config --global user.email "david@Gigabot"
+git config --global user.name "David"
+
 # VS Code settings
 cat >"$HOME/.config/Code/User/settings.json" <<EOL
 // Place your settings in this file to overwrite the default settings
