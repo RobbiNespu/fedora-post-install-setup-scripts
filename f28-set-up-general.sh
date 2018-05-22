@@ -28,7 +28,7 @@
 #      VERSION: 1.0
 #=======================================================================================
 
-sudo dnf remove gnome-photos
+sudo dnf remove gnome-photos gnome-documents
 
 read -rp "What would you like this computer to be called (hostname)? " hostname
 hostnamectl set-hostname "$hostname"
