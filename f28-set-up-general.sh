@@ -28,6 +28,8 @@
 #      VERSION: 1.0
 #=======================================================================================
 
+sudo dnf remove gnome-photos
+
 read -rp "What would you like this computer to be called (hostname)? " hostname
 hostnamectl set-hostname "$hostname"
 
@@ -43,7 +45,7 @@ sudo dnf -y --refresh upgrade
 echo "Installing packages..."
 sudo dnf -y install libva-intel-driver gstreamer1-vaapi gstreamer1-libav ffmpeg mpv \
     fuse-exfat gnome-tweak-tool gnome-shell-extension-auto-move-windows.noarch gnome-shell-extension-pomodoro \
-    java-1.8.0-openjdk keepassx transmission-gtk mkvtoolnix-gui borgbackup syncthing \
+    java-1.8.0-openjdk keepassx transmission-gtk mkvtoolnix-gui borgbackup syncthing shotwell \
     freetype-freeworld lshw mediainfo dolphin-emu mame klavaro jack-audio-connection-kit wine youtube-dl
 
 pip3 install --user mps-youtube
