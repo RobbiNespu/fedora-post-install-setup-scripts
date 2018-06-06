@@ -74,7 +74,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 # Set subpixel hinting for freetype-freeworld
 gsettings set org.gnome.settings-daemon.plugins.xsettings hinting slight
 gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing rgba
-echo "Xft.lcdfilter: lcddefault" | sudo tee ~/.Xresources
+echo "Xft.lcdfilter: lcddefault" >>"$HOME/.Xresources"
 
 # pacmd list-sinks | grep sample and see bit-depth available
 # pulseaudio --dump-re-sample-methods and see re-sampling available
