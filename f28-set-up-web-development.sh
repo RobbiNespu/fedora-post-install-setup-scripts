@@ -53,7 +53,7 @@ chmod +x shfmt_v2.3.0_linux_amd64
 sudo mv shfmt_v2.3.0_linux_amd64 /usr/local/bin/shfmt
 
 # Make a directory for websites/apps
-mkdir ~/sites
+mkdir "$HOME/sites"
 
 # Set git global values, you can still change them per project without the --global
 git config --global user.email "david@Gigabot"
