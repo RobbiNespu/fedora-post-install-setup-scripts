@@ -25,7 +25,7 @@
 #             - UMS > un-tick general config > enable external network + check force network on interface is correct network (wlp2s0)
 #       AUTHOR: David Else
 #      COMPANY: Else Web Development
-#      VERSION: 1.0
+#      VERSION: 1.1
 #=======================================================================================
 
 sudo dnf remove gnome-photos gnome-documents rhythmbox
