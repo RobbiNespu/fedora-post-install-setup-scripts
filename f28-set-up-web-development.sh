@@ -29,7 +29,7 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 echo "Installing packages..."
 
 # ffmpeg-libs is needed for h264 video in Firefox, see general install script, maybe add python3-tkinter for GUI in Python
-sudo dnf -y install docker docker-compose code chromium chromium-libs-media-freeworld nodejs zeal ShellCheck
+sudo dnf -y install docker docker-compose code chromium chromium-libs-media-freeworld nodejs zeal ShellCheck php php-json
 
 # Install VS Code extensions
 code --install-extension WallabyJs.quokka-vscode
@@ -46,6 +46,12 @@ code --install-extension timonwong.shellcheck
 
 # Install global Node packages
 sudo npm install -g npm-check eslint
+
+# Setup WP-Cli - you must have a $HOME/bin directory in the PATH
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+sudo mv wp-cli.phar ~/bin/wp # move it to new folder and rename it 'wp'
+wp --info                    # show WP-Cli info to show it's working
 
 # Install shfmt shell formatter from current directory onto the system for VS Code plugin shell-format
 # Binary available from https://github.com/mvdan/sh/releases
