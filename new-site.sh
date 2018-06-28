@@ -123,7 +123,7 @@ testrunner=$(
   <!-- <script type="module" src="./src/main.js"></script> -->
 
   <!-- the test file containing the tests -->
-  <script type="module" src="./test/tests.js"></script>
+  <script type="module" src="./tests/tests.js"></script>
 
   <script type="module">
     mocha.setup({ globals: ['__VUE_DEVTOOLS_TOAST__'] });
