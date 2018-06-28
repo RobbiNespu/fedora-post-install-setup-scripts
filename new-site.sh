@@ -28,8 +28,10 @@ packagejson=$(
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "watch": "watch --interval=0.5 'npm run build' src",
-    "build": "rollup --format=iife --file=dist/bundle.js -- src/main.js && purgecss --css src/*.css --content index.html src/*.js --out dist"
+    "watch": "watch --interval=0.5 'npm run build-js' src/js & watch --interval=0.5 'npm run build-css' src/css",
+    "build-js": "rollup --format=iife --file=dist/bundle.js -- src/js/main.js",
+    "build-css": "purgecss --css src/css/*.css --content index.html src/*.js --out dist",
+    "update-vendor-dir-vue-copy": "cp node_modules/vue/dist/vue.js vendor"
   },
   "keywords": [],
   "author": "",
@@ -78,7 +80,7 @@ EOF
 test=$(
     cat <<EOF
 /* eslint-disable */
-import app from '../src/app.js';
+import app from '../src/js/app.js';
 
 const assert = chai.assert;
 EOF
@@ -112,7 +114,7 @@ testrunner=$(
   </script>
 
   <!-- bundled js to test -->
-  <!-- <script type="module" src="./src/main.js"></script> -->
+  <!-- <script type="module" src="./src/js/main.js"></script> -->
 
   <!-- the test file containing the tests -->
   <script type="module" src="./tests/tests.js"></script>
@@ -133,7 +135,7 @@ EOF
 #################################################
 mainjs=$(
     cat <<EOF
-import '../src/app.js';
+import '../js/app.js';
 EOF
 )
 
@@ -181,13 +183,14 @@ mkdir "$sitename" || exit
 cd "$sitename" || exit
 
 # create common files and folders
-mkdir src dist tests vendor assets
-touch README.md src/main.css src/app.js
+mkdir src src/js src/css dist tests vendor assets
+wget -P src/css https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css
+touch README.md src/css/main.css src/js/app.js
 echo "$packagejson" >"package.json"
 echo "$gitnore" >".gitignore"
 echo "$test" >"tests/tests.js"
 echo "$testrunner" >"test-runner.html"
-echo "$mainjs" >"src/main.js"
+echo "$mainjs" >"src/js/main.js"
 
 # npm init and install default packages
 npm install --save-dev rollup purgecss watch mocha chai
@@ -201,10 +204,10 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     npm install vue
     cp node_modules/vue/dist/vue.js vendor
-    mkdir src/components
+    mkdir src/js/components
     libraries "vue"
     echo "$indexhtml" >"index.html"
-    echo "$appjsvue" >"src/app.js"
+    echo "$appjsvue" >"src/js/app.js"
 else
     libraries
     echo "$indexhtml" >"index.html"
