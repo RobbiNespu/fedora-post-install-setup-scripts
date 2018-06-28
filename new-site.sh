@@ -6,7 +6,7 @@ projectroot=$HOME/sites
 # function to modify the HTML template
 libraries() {
     if [ "$1" == "vue" ]; then
-        div='<div id="app">{{ message }}</div>'
+        div='  <div id="app">{{ message }}</div>'
         link='<script src="./vendor/vue.js"></script>'
         indexhtml=$(printf "$tpl" "$div" "$link")
     else
