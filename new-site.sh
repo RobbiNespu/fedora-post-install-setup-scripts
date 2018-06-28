@@ -20,6 +20,24 @@ libraries() {
 #                                               #
 #################################################
 
+packagejson=$(
+    cat <<EOF
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "watch": "watch --interval=0.5 'npm run build' src",
+    "build": "rollup --format=iife --file=dist/bundle.js -- src/main.js && purgecss --css src/*.css --content index.html src/*.js --out dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+EOF
+)
+
 #################################################
 # index.html (modified by libraries function)   #
 #################################################
@@ -31,7 +49,7 @@ read -d '' tpl <<_EOF_
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./dist/bundle.css">
+  <link rel="stylesheet" href="./dist/main.css">
   <title>Document</title>
 </head>
 
@@ -51,32 +69,6 @@ _EOF_
 gitnore=$(
     cat <<EOF
 node_modules/*
-EOF
-)
-
-#################################################
-# rollup.config.js                              #
-#################################################
-rollupconfig=$(
-    cat <<EOF
-import postcss from 'rollup-plugin-postcss';
-
-export default {
-  input: 'src/main.js',
-  output: {
-    file: 'dist/bundle.js',
-    format: 'iife',
-    sourcemap: true,
-  },
-  plugins: [
-    postcss({
-      plugins: [],
-      sourceMap: true,
-      extract: true,
-      // minimize: true,
-    }),
-  ],
-};
 EOF
 )
 
@@ -146,15 +138,6 @@ EOF
 )
 
 #################################################
-# app.js                                        #
-#################################################
-appjs=$(
-    cat <<EOF
-import '../src/main.css';
-EOF
-)
-
-#################################################
 #                                               #
 # vue templates not always installed            #
 #                                               #
@@ -166,8 +149,6 @@ EOF
 appjsvue=$(
     cat <<EOF
 /* global Vue */
-
-import '../src/main.css';
 
 export default new Vue({
   el: '#app',
@@ -201,16 +182,15 @@ cd "$sitename" || exit
 
 # create common files and folders
 mkdir src dist tests vendor assets
-touch README.md src/main.css
+touch README.md src/main.css src/app.js
+echo "$packagejson" >"package.json"
 echo "$gitnore" >".gitignore"
 echo "$test" >"tests/tests.js"
 echo "$testrunner" >"test-runner.html"
 echo "$mainjs" >"src/main.js"
-echo "$rollupconfig" >"rollup.config.js"
 
 # npm init and install default packages
-npm init --yes
-npm install --save-dev rollup rollup-plugin-postcss mocha chai
+npm install --save-dev rollup purgecss watch mocha chai
 
 #################################################
 # install vue optionally and exit               #
@@ -225,14 +205,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     libraries "vue"
     echo "$indexhtml" >"index.html"
     echo "$appjsvue" >"src/app.js"
-
-    git init
-    exit
+else
+    libraries
+    echo "$indexhtml" >"index.html"
 fi
 
-# if vue was not installed we write other files
-libraries
-echo "$indexhtml" >"index.html"
-echo "$appjs" >"src/app.js"
-
 git init
+code .
