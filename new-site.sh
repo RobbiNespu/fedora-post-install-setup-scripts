@@ -30,7 +30,7 @@ packagejson=$(
   "scripts": {
     "watch": "watch --interval=0.5 'npm run build-js' src/js & watch --interval=0.5 'npm run build-css' src/css",
     "build-js": "rollup --format=iife --file=dist/bundle.js -- src/js/main.js",
-    "build-css": "purgecss --css src/css/*.css --content index.html src/*.js --out dist",
+    "build-css": "purgecss --css src/css/*.css --content index.html src/js/*.js --out dist",
     "update-vendor-dir-vue-copy": "cp node_modules/vue/dist/vue.js vendor"
   },
   "keywords": [],
