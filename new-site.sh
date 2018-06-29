@@ -63,6 +63,10 @@ read -d '' tpl <<_EOF_
 %s
 <script src="./dist/bundle.js"></script>
 
+<!-- floating window for tests, delete for production.
+replace src address with your dev server address -->
+<iframe style="width:100%;height:190px;position:sticky;bottom:0;" src="http://127.0.0.1:5500/test-runner.html"></iframe>
+
 </html>
 _EOF_
 
@@ -84,6 +88,12 @@ test=$(
 import app from '../src/js/app.js';
 
 const assert = chai.assert;
+
+describe('Basic Mocha String Test', function() {
+  it('should return number of charachters in a string', function() {
+    assert.equal(app.stringVariable.length, 5);
+  });
+});
 EOF
 )
 
@@ -194,7 +204,17 @@ echo "$testrunner" >"test-runner.html"
 echo "$mainjs" >"src/js/main.js"
 
 # npm init and install default packages
-npm install --save-dev rollup purgecss watch mocha chai
+npm install --save-dev rollup watch mocha chai
+
+#################################################
+# install Purgecss optionally                   #
+#################################################
+echo
+read -p "Install Purgecss? (y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    npm install --save-dev purgecss
+fi
 
 #################################################
 # install vue optionally and exit               #
