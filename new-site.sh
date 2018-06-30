@@ -64,7 +64,7 @@ read -d '' tpl <<_EOF_
 <script src="./dist/bundle.js"></script>
 
 <!-- floating window for tests, DELETE FOR PRODUCTION -->
-<iframe id="tests-dialog" style="position:sticky;bottom:0;border-width: 2px 0 0;width:100%%;height:345px;background:white;"
+<iframe id="tests-dialog" style="position:sticky;bottom:0;border-width:2px 0 0;width:100%%;height:345px;background:white;"
   src="http://127.0.0.1:5500/test-runner.html"></iframe>
 <button onclick="toggleTests()" style="position:sticky; bottom: 3px;left:3px;">T</button>
 <script>
