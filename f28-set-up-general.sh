@@ -36,6 +36,7 @@ hostnamectl set-hostname "$hostname"
 echo "Enabling repositories..."
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm || exit 1
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || exit 1
+sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/28/winehq.repo || exit 1
 
 echo "Updating Fedora..."
 sudo dnf -y --refresh upgrade
@@ -44,7 +45,7 @@ echo "Installing packages..."
 sudo dnf -y install libva-intel-driver gstreamer1-vaapi gstreamer1-libav ffmpeg mpv \
     fuse-exfat gnome-tweak-tool gnome-shell-extension-auto-move-windows.noarch gnome-shell-extension-pomodoro \
     java-1.8.0-openjdk keepassx transmission-gtk mkvtoolnix-gui borgbackup syncthing shotwell \
-    freetype-freeworld lshw mediainfo dolphin-emu mame klavaro jack-audio-connection-kit wine youtube-dl gnome-terminal-nautilus
+    freetype-freeworld lshw mediainfo dolphin-emu mame klavaro jack-audio-connection-kit winehq-stable youtube-dl gnome-terminal-nautilus
 
 pip3 install --user mps-youtube
 
