@@ -76,7 +76,6 @@ cat >"$HOME/.config/Code/User/settings.json" <<EOL
     "editor.formatOnSave": true,
     "editor.minimap.enabled": true,
     "editor.detectIndentation": false,
-    "workbench.editor.enablePreview": false,
     "workbench.activityBar.visible": false,
     "window.menuBarVisibility": "toggle",
     "window.titleBarStyle": "custom",
