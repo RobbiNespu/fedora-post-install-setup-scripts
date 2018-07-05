@@ -68,24 +68,30 @@ git config --global user.name "David"
 # VS Code settings
 cat >"$HOME/.config/Code/User/settings.json" <<EOL
 // Place your settings in this file to overwrite the default settings
+// Place your settings in this file to overwrite the default settings
 {
-    // VS Code general settings
+    // VS Code 1.25.0 general settings
     "editor.renderWhitespace": "all",
     "editor.dragAndDrop": false,
     "editor.formatOnSave": true,
+    "editor.minimap.enabled": true,
+    "editor.detectIndentation": false,
     "workbench.editor.enablePreview": false,
     "workbench.activityBar.visible": false,
     "window.menuBarVisibility": "toggle",
-    "telemetry.enableTelemetry": false,
+    "window.titleBarStyle": "custom",
     "zenMode.fullScreen": false,
+    "zenMode.centerLayout": false,
+    "telemetry.enableTelemetry": false,
+    "javascript.showUnused": false,
     "explorer.sortOrder": "modified",
     "git.autofetch": true,
+    "git.enableSmartCommit": true,
     "php.validate.executablePath": "/usr/bin/php",
     "extensions.showRecommendationsOnlyOnDemand": true,
     "css.validate": false, // as we are using stylelint
     "less.validate": false, // as we are using stylelint
     "scss.validate": false, // as we are using stylelint
-    "editor.detectIndentation": false,
     "[javascript]": {
         "editor.tabSize": 2
     },
@@ -93,6 +99,9 @@ cat >"$HOME/.config/Code/User/settings.json" <<EOL
         "editor.tabSize": 2
     },
     "[css]": {
+        "editor.tabSize": 2
+    },
+    "[html]": {
         "editor.tabSize": 2
     },
     // Shell Format extension
@@ -110,9 +119,6 @@ cat >"$HOME/.config/Code/User/settings.json" <<EOL
     "liveServer.settings.ignoreFiles": [
         ".vscode/**",
         // "src/**",
-        "dist/bundle.css",
-        "**/*.scss",
-        "**/*.sass"
     ],
     "liveServer.settings.AdvanceCustomBrowserCmdLine": "/usr/bin/chromium-browser --remote-debugging-port=9222",
     // Spell Right extension
@@ -128,6 +134,11 @@ cat >"$HOME/.config/Code/User/settings.json" <<EOL
         "markdown",
         "latex",
         "plaintext"
+    ],
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "html"
     ]
 }
 EOL
