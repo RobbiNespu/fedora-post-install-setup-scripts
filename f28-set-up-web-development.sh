@@ -136,8 +136,7 @@ cat >"$HOME/.config/Code/User/settings.json" <<EOL
     ],
     "eslint.validate": [
         "javascript",
-        "javascriptreact",
-        "html"
+        "javascriptreact"
     ]
 }
 EOL
