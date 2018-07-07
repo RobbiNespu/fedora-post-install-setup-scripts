@@ -32,8 +32,8 @@ echo "Installing packages..."
 sudo dnf -y install docker docker-compose code chromium chromium-libs-media-freeworld nodejs zeal ShellCheck php php-json
 
 # Install VS Code extensions
-code --install-extension WallabyJs.quokka-vscode
 code --install-extension ban.spellright
+code --install-extension bierner.comment-tagged-templates
 code --install-extension dbaeumer.vscode-eslint
 code --install-extension deerawan.vscode-dash
 code --install-extension esbenp.prettier-vscode
@@ -43,6 +43,8 @@ code --install-extension msjsdiag.debugger-for-chrome
 code --install-extension ritwickdey.LiveServer
 code --install-extension shinnn.stylelint
 code --install-extension timonwong.shellcheck
+code --install-extension WallabyJs.quokka-vscode
+code --install-extension Zignd.html-css-class-completion
 
 # Install global Node packages
 sudo npm install -g npm-check eslint
