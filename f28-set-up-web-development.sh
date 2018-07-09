@@ -47,7 +47,7 @@ code --install-extension WallabyJs.quokka-vscode
 code --install-extension Zignd.html-css-class-completion
 
 # Install global Node packages
-sudo npm install -g npm-check eslint
+sudo npm install -g npm-check eslint mocha jsdom jsdom-global
 
 # Setup WP-Cli - you must have a $HOME/bin directory in the PATH
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
