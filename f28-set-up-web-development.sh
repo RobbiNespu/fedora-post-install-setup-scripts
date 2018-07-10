@@ -41,7 +41,6 @@ code --install-extension foxundermoon.shell-format
 code --install-extension mkaufman.HTMLHint
 code --install-extension msjsdiag.debugger-for-chrome
 code --install-extension ritwickdey.LiveServer
-code --install-extension shinnn.stylelint
 code --install-extension timonwong.shellcheck
 code --install-extension WallabyJs.quokka-vscode
 code --install-extension Zignd.html-css-class-completion
@@ -90,9 +89,6 @@ cat >"$HOME/.config/Code/User/settings.json" <<EOL
     "git.enableSmartCommit": true,
     "php.validate.executablePath": "/usr/bin/php",
     "extensions.showRecommendationsOnlyOnDemand": true,
-    "css.validate": false, // as we are using stylelint
-    "less.validate": false, // as we are using stylelint
-    "scss.validate": false, // as we are using stylelint
     "[javascript]": {
         "editor.tabSize": 2
     },
