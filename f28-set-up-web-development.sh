@@ -135,6 +135,8 @@ cat >"$HOME/.config/Code/User/settings.json" <<EOL
     "eslint.validate": [
         "javascript",
         "javascriptreact"
-    ]
+    ],
+    "css.lint.zeroUnits": "warning",
+    "css.lint.important": "warning"
 }
 EOL
