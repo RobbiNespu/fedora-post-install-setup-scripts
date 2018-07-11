@@ -1,5 +1,26 @@
 #!/bin/bash
 
+#=======================================================================================
+#
+#         FILE: new-site.sh
+#
+#        USAGE: new-site.sh
+#
+#  DESCRIPTION: Create minimal scaffolding for a front-end JavaScript project
+#               that uses VueJS or plain vanilla JS code.
+#               Uses ES6 modules as standard with an option to bundle to /dist folder
+#               using Rollup/PurgeCSS to treeshake code.
+#
+# REQUIREMENTS: BASH
+#         BUGS: ---
+#        NOTES: Tested on Fedora Linux
+#       AUTHOR: David Else
+#      COMPANY: https://www.elsewebdevelopment.com/
+#      VERSION: 1.0
+#      CREATED: July 2018
+#
+#=======================================================================================
+
 # check you have npm installed before proceeding
 hash npm 2>/dev/null || {
     echo >&2 "You need to install NPM to use this script" && exit 1
