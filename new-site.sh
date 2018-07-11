@@ -3,7 +3,6 @@
 #=======================================================================================
 #
 #         FILE: new-site.sh
-#
 #        USAGE: new-site.sh
 #
 #  DESCRIPTION: Create minimal scaffolding for a front-end JavaScript project
