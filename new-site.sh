@@ -6,7 +6,7 @@
 #        USAGE: new-site.sh
 #
 #  DESCRIPTION: The minimal scaffolding for a modular front-end JavaScript project with tests
-#               Suitable for VueJS or plain 'vanilla JS' projects
+#               Suitable for VueJS or plain 'Vanilla JS' projects
 #               ES6 modules as standard with an optional build step for treeshaking
 #
 # REQUIREMENTS: BASH language and NPM installed
