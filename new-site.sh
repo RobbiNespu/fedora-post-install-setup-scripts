@@ -105,7 +105,14 @@ EOF
     #  vue test template ######################
     vue_test=$(
         cat <<EOF
-import { strictEqual, deepStrictEqual } from 'assert';
+import {
+  strictEqual,
+  notStrictEqual,
+  deepStrictEqual,
+  notDeepStrictEqual,
+  throws,
+  doesNotThrow,
+} from 'assert';
 import { mount } from '@vue/test-utils';
 import App from '../src/App.js';
 
@@ -226,7 +233,14 @@ EOF
     #  test template ######################
     test=$(
         cat <<EOF
-import { strictEqual, deepStrictEqual } from 'assert';
+import {
+  strictEqual,
+  notStrictEqual,
+  deepStrictEqual,
+  notDeepStrictEqual,
+  throws,
+  doesNotThrow,
+} from 'assert';
 import App from '../src/app.js';
 
 document.body.innerHTML = '<div id="app"></div>';
