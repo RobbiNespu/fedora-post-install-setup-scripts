@@ -2,15 +2,14 @@
 
 #=======================================================================================
 #
-#        TITLE: Minimalist Vue.js Project Generator
+#        TITLE: InvigorateJS - Minimalist Vue/Vanilla JavaScript Scaffolding Solution
 #        USAGE: new-site.sh
 #
-#  DESCRIPTION: Create minimal scaffolding for a Vue.js JavaScript project
-#               that uses VueJS or plain vanilla JS code.
-#               Uses ES6 modules as standard with an option to bundle to /dist folder
-#               using Rollup/PurgeCSS to tree-shake code.
+#  DESCRIPTION: The minimal scaffolding for a modular front-end JavaScript project with tests
+#               Suitable for VueJS or plain 'vanilla JS' projects
+#               ES6 modules as standard with an optional build step for treeshaking
 #
-# REQUIREMENTS: BASH language installed
+# REQUIREMENTS: BASH language and NPM installed
 #         BUGS: ---
 #        NOTES: Tested on Fedora Linux
 #       AUTHOR: David Else
