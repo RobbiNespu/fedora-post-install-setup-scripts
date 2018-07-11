@@ -2,15 +2,15 @@
 
 #=======================================================================================
 #
-#         FILE: new-site.sh
+#        TITLE: Minimalist Vue.js Project Generator
 #        USAGE: new-site.sh
 #
-#  DESCRIPTION: Create minimal scaffolding for a front-end JavaScript project
+#  DESCRIPTION: Create minimal scaffolding for a Vue.js JavaScript project
 #               that uses VueJS or plain vanilla JS code.
 #               Uses ES6 modules as standard with an option to bundle to /dist folder
-#               using Rollup/PurgeCSS to treeshake code.
+#               using Rollup/PurgeCSS to tree-shake code.
 #
-# REQUIREMENTS: BASH
+# REQUIREMENTS: BASH language installed
 #         BUGS: ---
 #        NOTES: Tested on Fedora Linux
 #       AUTHOR: David Else
@@ -60,7 +60,7 @@ read -p "Install Vue? (y/n) " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     #################################################
-    # install and setup vue                         #
+    # install and set-up vue                        #
     #################################################
 
     #  vue package.json template ####################
@@ -195,7 +195,7 @@ EOF
 
 else
     #################################################
-    # install and setup standard template           #
+    # install and set-up standard template          #
     #################################################
 
     #  package.json template ####################
